@@ -1,8 +1,14 @@
 package persistence;
 
+import java.io.File;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+
+import com.sun.jersey.server.impl.container.servlet.JerseyServletContainerInitializer;
+
 
 public class ConnectionSqLite {
 	
@@ -29,7 +35,10 @@ public class ConnectionSqLite {
 		Connection conn = null;
 		try {
 			Class.forName("org.sqlite.JDBC").newInstance();
-			conn = DriverManager.getConnection(String.format("jdbc:sqlite:%s", "/home/valmir/Área de Trabalho/Teste Zup/workspace/teste-valmir/bd/poi.db"));
+			
+			File arquivo = new File(System.getProperty("user.dir") + "/db", "poi.db");
+			conn = DriverManager.getConnection(String.format("jdbc:sqlite:%s", arquivo.getAbsolutePath()));
+			
 			if (conn.getAutoCommit()) {
 				conn.setAutoCommit(false);
 			}
