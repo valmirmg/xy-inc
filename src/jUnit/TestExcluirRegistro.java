@@ -1,7 +1,5 @@
 package jUnit;
 
-import static org.junit.Assert.*;
-
 import java.util.Scanner;
 
 import org.junit.Test;
@@ -9,6 +7,7 @@ import org.junit.Test;
 import persistence.DAO;
 
 public class TestExcluirRegistro {
+	
 
 	@Test
 	public void test() throws Exception {
